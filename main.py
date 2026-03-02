@@ -1,11 +1,35 @@
 import flet as ft
 
 def main(page: ft.Page):
-    page.title = "formulario de registro de eventis"
-    page.padding = 20
-    titulo = ft.Text(
-        "Registro de Eventos",
-        size=30,
-        weight=ft.FontWeight.BOLD,
-        color="blue"
-    )
+    page.add(ft.TextField(
+    label="Nombre",
+    hint_text="Ingresa tu nombre",
+    value="",
+    prefix_icon=ft.Icons.PERSON,
+    suffix_text=".com",
+    helper_text="Máximo 50 caracteres",
+    error_text="Campo obligatorio",
+    password=False,
+    can_reveal_password=False,
+    multiline=False,
+    max_length=50,
+    keyboard_type=ft.KeyboardType.TEXT,
+    border=ft.InputBorder.OUTLINE,
+    border_color=ft.Colors.BLUE,
+    focused_border_color=ft.Colors.RED,
+    filled=True,
+    bgcolor=ft.Colors.GREY_100,
+    on_change=lambda e: print(e.control.value),
+    on_submit=lambda e: print("Enter presionado")
+))
+    page.add(ft.Checkbox(
+    label="Acepto términos",
+    value=False,
+    tristate=False,
+    check_color=ft.Colors.WHITE,
+    fill_color=ft.Colors.GREEN,
+    on_change=lambda e: print(f"Estado: {e.control.value}")
+))
+
+
+ft.app(target=main)
